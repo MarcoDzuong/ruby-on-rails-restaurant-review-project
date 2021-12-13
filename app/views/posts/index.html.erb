@@ -3,22 +3,21 @@
 <h1>Posts</h1>
 
 <% if @posts[0] != nil then %>
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>User</th>
-        <th>Res</th>
-        <th>Title</th>
-        <th colspan="3"></th>
+        <th>Restaurant</th>
+        <th>Post title</th>
+        <th colspan="3">Action</th>
       </tr>
     </thead>
-  
     <tbody>
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.user.name %></td>
-          <td><%= @res[post.res_id - 1].name %> </td>
-          <td><%= post.title %> </td>
+          <td><%= post.res_id %></td>
+          <td><%= post.title %></td>
           <td><%= link_to 'Show', post %></td>
           <% if post.user.name == current_user.name %>
             <td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -28,6 +27,7 @@
       <% end %>
     </tbody>
   </table>
+
 <% else %>
   <p>No posts at the moment!!! Create one?</p>
   <p>↓</p>

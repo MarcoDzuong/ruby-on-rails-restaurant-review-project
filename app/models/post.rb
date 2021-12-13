@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
     has_one_attached :image
     belongs_to :user
-    belongs_to :re, :optional => true
+    has_many :post_comment, -> { order "created_at DESC"}
 end
