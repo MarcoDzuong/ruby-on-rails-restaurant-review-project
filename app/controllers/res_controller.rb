@@ -11,6 +11,8 @@ class ResController < ApplicationController
   # GET /res/1
   # GET /res/1.json
   def show
+    @re = Re.find(params[:id])
+    @item = Item.new
   end
 
   # GET /res/new
@@ -29,7 +31,7 @@ class ResController < ApplicationController
 
     respond_to do |format|
       if @re.save
-        format.html { redirect_to @re, notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to @re, notice: 'Re was successfully created.' }
         format.json { render :show, status: :created, location: @re }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class ResController < ApplicationController
   def update
     respond_to do |format|
       if @re.update(re_params)
-        format.html { redirect_to @re, notice: 'Restaurant was successfully updated.' }
+        format.html { redirect_to @re, notice: 'Re was successfully updated.' }
         format.json { render :show, status: :ok, location: @re }
       else
         format.html { render :edit }
@@ -57,7 +59,7 @@ class ResController < ApplicationController
   def destroy
     @re.destroy
     respond_to do |format|
-      format.html { redirect_to res_url, notice: 'Restaurant was successfully destroyed.' }
+      format.html { redirect_to res_url, notice: 'Re was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
